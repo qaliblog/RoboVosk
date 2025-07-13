@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    // If you are using Kotlin in your project (even just via core-ktx), add the Kotlin plugin
+    // id 'org.jetbrains.kotlin.android'
+}
+
+// Add this block to force consistent Kotlin stdlib versions
+configurations.all {
+    resolutionStrategy {
+        // Force all kotlin standard library artifacts to align to a single version.
+        // Version 1.8.10 was mentioned in your error log as the newer version present.
+        // If core-ktx or other libraries require a different newer version, adjust accordingly.
+        force "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+        force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
+        force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
+    }
+}
+
+android {
+    // Use a namespace consistent with your package structure
+    namespace "org.vosk.demo" // Make sure this matches your actual package
+    compileSdkVersion 33 // Or 34
+
+    defaultConfig {
+        applicationId "org.vosk.demo" // Or org.vosk.demo.jarvis
+        minSdkVersion 21
+        targetSdkVersion 33 // Or 34
+        versionCode 1
+        versionName "1.1-template-fix1" // Updated version name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // NDK configuration
+        ndkVersion = "25.2.9519653" // Ensure this is installed via SDK Manager
+        ndk {
+            // Include ABIs supported by vosk-android AAR
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false // Easier debugging
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // Needed for JNA interaction if you encounter issues with native libs
+     packagingOptions {
+         jniLibs {
+             useLegacyPackaging = true // May sometimes help with JNA libs
+         }
+         resources {
+             excludes += '/META-INF/{AL2.0,LGPL2.1}' // Common exclusion for library conflicts
+             // Exclude Kotlin stdlib duplicates if the above strategy isn't enough (less common)
+             // excludes += '/META-INF/kotlin*.kotlin_module'
+             // excludes += 'META-INF/versions/9/module-info.class'
+         }
+     }
+}
+
+// Inside app/build.gradle dependencies { ... } block
+
+dependencies {
+    implementation project(":models")
+    // https://mvnrepository.com/artifact/com.harium.hci/espeak
+    implementation("com.harium.hci:espeak:1.0.0")
+    // AndroidX Libraries
+    implementation 'androidx.appcompat:appcompat:1.6.1' // You likely have this
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-ktx:1.10.1'
+
+    // **** ADD THIS IF MISSING **** Required for Material Components themes/attributes
+    implementation 'com.google.android.material:material:1.9.0' // Use a recent version
+
+    // Vosk and JNA
+    implementation 'net.java.dev.jna:jna:5.13.0@aar'
+    implementation 'com.alphacephei:vosk-android:0.3.47@aar'
+
+    // Testing dependencies
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
