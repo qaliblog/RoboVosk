@@ -2,14 +2,8 @@
 
 buildscript {
     repositories {
-        /* Gradle-Plugin Portal mirror */
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-
-        /* Google Maven mirror (AndroidX, Compose, Play-Services, Firebase…) */
-        maven { url 'https://maven.aliyun.com/repository/google' }
-
-        /* Maven Central mirror */
-        maven { url 'https://maven.aliyun.com/repository/public' }
+        google()
+        mavenCentral()
     }
 
     dependencies {
@@ -20,7 +14,7 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/public' }
+        google()
+        mavenCentral()
     }
 }
