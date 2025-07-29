@@ -98,6 +98,9 @@ public class VoskActivity extends Activity implements
     // --- Threading & Main Handler ---
     private Handler mainHandler;
 
+    // Add a flag to track if we are in command listening mode
+    private boolean listeningForCommand = false;
+
 
     @Override
     public void onCreate(Bundle state) {
@@ -425,10 +428,44 @@ public class VoskActivity extends Activity implements
         }
 
         mainHandler.post(() -> {
-            if (currentState == STATE_MIC && !isPaused) { // <<< Check !isPaused here
+            if (currentState == STATE_MIC && !isPaused) {
                 String lowerHypothesis = partialText.toLowerCase().trim();
                 String resp = null;
                 boolean commandMatched = false;
+
+                // --- Wake word logic ---
+                if (!listeningForCommand && lowerHypothesis.contains("واسک")) {
+                    // Mute the volume
+                    if (audioManager != null) {
+                        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+                    }
+                    listeningForCommand = true;
+                    if (jarvisResponseView != null) {
+                        jarvisResponseView.setText("منتظر فرمان...");
+                    }
+                    if (resultView != null) {
+                        resultView.append("\nواژه بیدارباش: واسک");
+                        scrollToBottom(resultView);
+                    }
+                    return;
+                }
+
+                // --- Command listening logic ---
+                if (listeningForCommand) {
+                    if (lowerHypothesis.contains("بزن آهنگ بعدی")) {
+                        sendMediaKeyEvent(KeyEvent.KEYCODE_MEDIA_NEXT);
+                        if (jarvisResponseView != null) {
+                            jarvisResponseView.setText("آهنگ بعدی در حال پخش است");
+                        }
+                        if (resultView != null) {
+                            resultView.append("\nفرمان: بزن آهنگ بعدی");
+                            scrollToBottom(resultView);
+                        }
+                        listeningForCommand = false; // Reset after command
+                        return;
+                    }
+                    // Add more commands as needed here
+                }
 
                 // --- Command Checking Logic (Persian) ---
                 if (!commandMatched && (lowerHypothesis.contains("سلام") && lowerHypothesis.contains("ماشین"))) {
