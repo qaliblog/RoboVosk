@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <!-- Make sure the parent theme is correct (e.g., from Material Components) -->
-    <style name="Theme.VoskDemoJarvis" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Robomask" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
         <!-- Primary brand color. -->
         <!-- Ensure these reference colors defined in colors.xml -->
