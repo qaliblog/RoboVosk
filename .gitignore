@@ -4,6 +4,7 @@
 /build
 /app/build
 /models/build
+/models/src/main/assets/vosk-model-small-fa-0.42
 .DS_Store
 *.md5
 *.lst

@@ -1,19 +1,26 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Top-level build file
 
 buildscript {
     repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
+        /* Gradle-Plugin Portal mirror */
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+        /* Google Maven mirror (AndroidX, Compose, Play-Services, Firebase…) */
+        maven { url 'https://maven.aliyun.com/repository/google' }
+
+        /* Maven Central mirror */
+        maven { url 'https://maven.aliyun.com/repository/public' }
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.1'
+        // other buildscript plugins …
     }
 }
 
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
     }
 }

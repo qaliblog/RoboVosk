@@ -13,6 +13,7 @@
         tools:targetApi="s">
         <activity
             android:name="VoskActivity"
+            android:supportsRtl="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,52 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App Name -->
-    <string name="app_name">Vosk Demo</string>
+    <string name="app_name">Vosk Demo (Persian)</string>
 
-    <!-- Statuses -->
-    <string name="preparing">Preparing…</string>
-    <string name="ready">Ready</string>
-    <string name="calibrating">Calibrating… Please remain silent.</string>
-    <string name="listening_status">Listening: %s...</string>
-    <string name="listening_status_prefix">Listening:</string> <!-- Used for internal checks -->
-    <string name="listening_status_empty">Listening...</string>
-    <string name="paused_status">Paused</string>
-    <string name="recognition_log_title">Recognition Results Log</string>
+    // Statuses
+    <string name="preparing">در حال آماده سازی…</string>
+    <string name="ready">آماده</string>
+    <string name="calibrating">در حال کالیبراسیون… لطفاً سکوت کنید.</string>
+    <string name="listening_status">در حال شنیدن: %s...</string>
+    <string name="listening_status_prefix">در حال شنیدن:</string> // Used for internal checks
+    <string name="listening_status_empty">در حال شنیدن...</string>
+    <string name="paused_status">متوقف شد</string>
+    <string name="recognition_log_title">گزارش نتایج تشخیص</string>
 
-    <!-- Buttons -->
-    <string name="recognize_microphone">Start Listening</string>
-    <string name="stop_microphone">Stop Listening</string>
-    <string name="pause_caption_on">Pause</string> <!-- Text for Pause button when active -->
-    <string name="pause_caption_off">Pause</string> <!-- Text for Pause button when inactive (can be same) -->
-    <string name="calibrate_button_text">Calibrate</string>
+    // Buttons
+    <string name="recognize_microphone">شروع گوش دادن</string>
+    <string name="stop_microphone">توقف گوش دادن</string>
+    <string name="pause_caption_on">مکث</string> <!-- Text for ToggleButton when OFF -->
+    <string name="pause_caption_off">ادامه</string> <!-- Text for ToggleButton when ON (Checked) -->
+    <string name="calibrate_button_text">کالیبره کردن</string>
 
-    <!-- Results -->
-    <string name="final_result_prefix">Final: </string>
-    <string name="empty_final_result">[Empty Final Result]</string>
-    <string name="timeout_message">[Timeout]</string>
+    // Results
+    <string name="final_result_prefix">نهایی: </string>
+    <string name="empty_final_result">[سکوت/خالی]</string>
+    <string name="timeout_message">[پایان زمان]</string>
 
-    <!-- Jarvis Responses -->
-    <string name="response_hello_sir">Hello Sir</string>
-    <string name="response_yes_sir">Yes Sir?</string>
-    <string name="response_play_music">Playing music…</string>
-    <string name="response_next_song">Playing next song…</string>
-    <string name="response_previous_song">Playing previous song…</string>
+    // Machine Responses
+    <string name="response_hello_sir">سلام قربان</string>
+    <string name="response_yes_sir">بله قربان؟</string>
+    <string name="response_play_music">در حال تغییر وضعیت پخش موسیقی…</string>
+    <string name="response_next_song">در حال پخش آهنگ بعدی…</string>
+    <string name="response_previous_song">در حال پخش آهنگ قبلی…</string>
 
-    <!-- Errors and Tips -->
-    <string name="error_prefix">ERROR: </string>
-    <string name="error_permission_denied">Permission denied</string>
-    <string name="error_model_load">Failed to load model.</string>
-    <string name="error_mic_init">Failed to initialize microphone: </string>
-    <string name="error_recognizer">Recognizer error: </string>
-    <string name="calibrate_tip">Tip: Calibrate first for better results in noise.</string>
-    <string name="calibration_complete">Calibration complete. Average RMS: %.2f</string>
-    <string name="calibration_failed_no_audio">Calibration failed: No significant audio detected.</string>
-    <string name="calibration_failed_error">Calibration failed: %s</string>
-    
-<!-- Add these if you choose Option 2 -->
-<string name="jarvis_response_hint">Status / Response</string>
-<string name="results_hint">Recognition Log</string>
-<string name="button_calibrate">Calibrate</string>
-<string name="button_pause_on">Pause On</string>   <!-- Or just "Pause" -->
-<string name="button_pause_off">Pause Off</string> <!-- Or just "Pause" -->
+    // Errors and Tips
+    <string name="error_prefix">خطا: </string>
+    <string name="error_permission_denied">مجوز رد شد</string>
+    <string name="error_model_load">خطا در بارگیری مدل گفتار.</string>
+    <string name="error_mic_init">خطا در راه اندازی میکروفون: </string>
+    <string name="error_recognizer">خطای تشخیص دهنده: </string>
+    <string name="calibrate_tip">نکته: برای نتایج بهتر در محیط های پر سر و صدا ابتدا کالیبره کنید.</string>
+    <string name="calibration_complete">کالیبراسیون کامل شد. میانگین RMS: %.2f</string>
+    <string name="calibration_failed_no_audio">کالیبراسیون ناموفق بود: صدای قابل توجهی تشخیص داده نشد.</string>
+    <string name="calibration_failed_error">کالیبراسیون ناموفق بود: %s</string>
+
 </resources>
