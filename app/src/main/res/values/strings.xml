@@ -41,5 +41,9 @@
     <string name="calibration_complete">کالیبراسیون کامل شد. میانگین RMS: %.2f</string>
     <string name="calibration_failed_no_audio">کالیبراسیون ناموفق بود: صدای قابل توجهی تشخیص داده نشد.</string>
     <string name="calibration_failed_error">کالیبراسیون ناموفق بود: %s</string>
-
+    <string name="jarvis_response_hint">Response hint</string>
+    <string name="results_hint">Results hint</string>
+    <string name="button_calibrate">Calibrate</string>
+    <string name="button_pause_on">Pause On</string>
+    <string name="button_pause_off">Pause Off</string>
 </resources>
